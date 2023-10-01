@@ -1,0 +1,477 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Paytone+One&display=swap');
+
+.square-button {
+    width: 100%;
+    height: 230px;
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+    position: relative;
+    transition: all .3s ease-in-out;
+    text-decoration: none;
+    padding: .7rem;
+
+    &:hover{
+        color: white;
+        transform: scale(1.04);
+    }
+
+    .icon{
+        position: absolute;
+        font-size: 2rem;
+        right: 10px;
+        top: 5px;
+        
+    }
+
+    p{
+        font-size: 1rem;
+    }
+
+    h1{
+        font-family: 'Lilita One', cursive;
+        font-family: 'Paytone One', sans-serif;
+        font-size: 3rem;
+    }
+}
+
+.orange{
+    background-color: coral;
+}
+
+.lime{
+    background-color: rgb(228, 210, 39);
+}
+
+.gray{
+    background-color: rgba(125, 125, 125, 0.517);
+}
+
+.azzurro{
+    background-color: rgba(80, 162, 255, 0.562);
+}
+
+.azzurro-full{
+    background-color: rgb(73, 134, 203);
+}
+
+.green{
+    background-color: rgba(106, 255, 80, 0.603);
+}
+
+.blue{
+    background-color: rgb(53, 44, 223);
+}
+
+.blue-default{
+    background-color: rgb(20, 81, 143);
+}
+
+.blue-strong{
+    background-color: #211585;
+}
+
+.part-box{
+    background-color: white;
+    width: 100%;
+    min-height: 50px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    border-radius: .5rem;
+    padding: .8rem;
+
+    p{
+        font-size: 1.3rem;
+    }
+
+    &:hover{
+        background-color: white;
+        transition: ease-in-out;
+        transform: scale(1.01);
+    }
+
+    .number{
+        background-color: rgb(223, 223, 223);
+        padding: .3rem;
+        border-radius: .5rem;
+        margin: 0;
+    }
+}
+
+.big-title{
+    font-size: 2.5rem;
+}
+
+.title{
+    font-size: 3rem;
+}
+
+.title-small{
+    font-size: 1.2rem;
+}
+
+.title-big{
+    font-size: 4rem;
+}
+
+.custom-search-bar {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 60%;
+    margin: 0 auto;
+
+    .custom-input {
+        border: none;
+        background-color: transparent;
+        outline: none;
+        width: 180px;
+        font-size: 1rem;
+    }
+    
+    .custom-button {
+        background-color: rgb(20, 81, 143);
+        border: none;
+        color: white;
+        border-radius: 8px;
+        padding: 6px 12px;
+        cursor: pointer;
+    }
+}
+
+
+
+
+.box-card{
+    background-color: white;
+    border-radius: .5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 2px;
+    margin: 0 auto;
+    width: 65%;
+    position: relative;
+
+    .desc-box{
+        font-size: 1rem;
+    }
+
+    .preview-image-view{
+        width: 230px;
+        height: 230px;
+        border-radius: .5rem;
+        object-fit: cover;
+        margin-top: 1rem;
+        margin-right: 1rem;
+        background-color: whitesmoke;
+    }
+
+    .box-code{
+        position: absolute;
+        top: 210px;
+        left: 20px;
+        background-color: white;
+        padding: .5rem;
+        border-radius: .5rem;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .desc-text{
+        background-color: rgba(239, 239, 239, 0.691);
+        width: 100%;
+        border-radius: .5rem;
+        min-height: 80px;
+        padding: .5rem;
+        margin-top: .5rem;
+    }
+
+}
+
+.capsule-box{
+    display: flex;
+    justify-content: start;
+    margin: 0 auto;
+    width: 60%;
+    margin-top: 1rem;
+    padding: .5rem;
+
+    .tag-box{
+        border-radius: .3rem;
+        width: 20px;
+        height: 20px;
+        padding: .2rem;
+    }
+}
+
+.button-back{
+    background-color: rgba(239, 239, 239, 0.691);
+    border-radius: 25%;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+
+    &:hover{
+        transform: scale(1.15);
+    }
+
+    .icon-back{
+        text-decoration: none;
+        color: black;
+        font-size: 2rem;
+    }
+}
+
+
+
+.box-type{
+    background-color: white;
+    border-radius: 1rem;
+    color: rgb(20, 81, 143);
+    text-align: center;
+    padding: 1rem;
+    width: 40%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    .icon-tag{
+        font-size: 2rem;
+        padding: 1rem;
+    }
+}
+
+.barcode-text{
+    font-family: 'barcode font', sans-serif;
+    font-size: 8rem;
+    margin: 0;
+    color: black;
+    //max-height: 110px;
+}
+
+
+.button-none{
+    background-color: transparent;
+    border: none;
+}
+
+.new-item-create{
+    border: .3px solid rgba(128, 128, 128, 0.2);
+    padding: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    width: 90%;
+    margin: 0 auto;
+
+}
+
+.button-create{
+    color: white;
+    border-radius: .5rem;
+    width: 50%;
+    margin: 0 auto;
+    border: none;
+    padding: 1rem;
+    margin-top: 2rem;
+    transition: all .2s ease-in-out;
+
+    &:hover{
+        transform: scale(1.02);
+        
+    }
+}
+
+.menu{
+    background-color: rgba(239, 239, 239, 0.691);
+    width: 90%;
+    height: 95vh;
+    border-radius: 1rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: flex-start;
+    flex-direction: column;
+
+    .menu-button{
+        width: 100%;
+        border-radius: .5rem;
+        background-color: rgba(239, 239, 239, 0.691);
+        color: rgb(66, 66, 66);
+        text-decoration: none;
+        text-align: start;
+        height: 40px;
+        line-height: 40px;
+        transition: all .2s ease-in-out;
+        padding-left: 1rem;
+        font-weight: bold;
+
+        &:hover{
+            transform: scale(1.03);
+            background-color: rgb(216, 216, 216);
+        }
+
+    }
+
+    .menu-button-dashboard{
+        width: 100%;
+        border-radius: .5rem;
+        text-decoration: none;
+        text-align: center;
+        color: white;
+        height: 40px;
+        line-height: 40px;
+        background-color: rgb(20, 81, 143);
+        font-weight: bold;
+        transition: all .2s ease-in-out;
+
+        &:hover{
+            transform: scale(1.03);
+        }
+    }
+
+    .circle{
+        width: 15px;
+        height: 15px;
+        border-radius: .3rem;
+    }
+
+    .button-logout{
+        text-decoration: none;
+        font-size: 1.2rem;
+        color: black;
+        font-weight: bold;
+    }
+
+}
+
+.main{
+    overflow-x: hidden;
+    font-family: 'Lexend Deca', sans-serif;
+    background-color: white;
+}
+
+.preview-image{
+    border-radius: .5rem;
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.icon-image{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.6rem;
+}
+
+.capsule{
+    border-radius: 1rem;
+    text-align: center;
+    padding: .1rem;
+}
+
+.button-action{
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+    border: none;
+}
+
+.view-table{
+    max-height: 75vh;
+    overflow-x: hidden;
+    border-radius: .4rem;
+}
+
+.table-head{
+    background-color: rgba(239, 239, 239, 0.691);
+    color: black;
+    border-radius: .4rem;
+    padding: .2rem .6rem;
+    font-weight: bold;
+}
+
+.status{
+    position: absolute;
+    right: 45%;
+    top: 3%;
+    padding: .3rem 1rem;
+    border-radius: .5rem;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    animation: enter .2s forwards;
+}
+
+.hide{
+    animation: bounce .3s forwards;
+    pointer-events: none;
+}
+
+.img-container{
+    width: 100%;
+    position: relative;
+    margin-top: 1rem;
+
+    .img-edit-view{
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: .5rem;
+    }
+
+    .delete-button{
+        background-color: rgb(215, 29, 29);
+        color: white;
+        border-radius: .4rem;
+        position: absolute;
+        left: 8px;
+        top: 8px;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        padding: .1rem;
+        transition: all .2s ease-in-out;
+
+        &:hover{
+            transform: scale(1.05);
+        }
+    }
+
+}
+
+
+@keyframes bounce {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes enter {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
