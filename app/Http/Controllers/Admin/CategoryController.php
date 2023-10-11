@@ -44,7 +44,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'name' => 'required|string|max:20|unique:categories',
+            'description' => 'nullable|string|max:150'
+        ]);
+
+        $catgoryValidate = $request->all();
+
+        $catgory = New Category();
+        $catgory->fill($catgoryValidate);
+        $catgory->save();
+
+        return redirect()->route('admin.categories.index')->with('create', 'Item created');
     }
 
     /**
@@ -66,7 +78,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -78,7 +91,18 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:20|unique:categories',
+            'description' => 'nullable|string|max:150'
+        ]);
+
+        $category = Category::findOrFail($id);
+        $data = $request->all();
+
+        $category->update($data);
+        $category->save();
+
+        return redirect()->route('admin.categories.index')->with('update', 'Item updated');
     }
 
     /**
@@ -87,8 +111,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        if($category->parts->count() > 0){
+            return redirect()->route('admin.categories.index', ['category' => $category])->with('status', 'Impossibile eliminare l\'elemento poiché è utilizzato');
+        }
+
+        $category->delete();
+
+        return redirect()->route('admin.categories.index', ['category' => $category])->with('status', 'Item deleted');
     }
 }

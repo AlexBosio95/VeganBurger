@@ -78,8 +78,8 @@
                         <div class="circle azzurro me-2"></div>
                         <p class="mb-0 fw-bold">SUPPLIERS</p>
                     </div>
-                    <a class="menu-button mt-1" href=""><i class="bi bi-list"></i> View</a>
-                    <a class="menu-button" href=""><i class="bi bi-plus-circle-fill"></i> Add New</a>
+                    <a class="menu-button mt-1" href="{{route('admin.manufacturers.index')}}"><i class="bi bi-list"></i> View</a>
+                    <a class="menu-button" href="{{route('admin.manufacturers.create')}}"><i class="bi bi-plus-circle-fill"></i> Add New</a>
 
                     {{-- Logout --}}
                     <div class="d-flex align-items-center mt-5">

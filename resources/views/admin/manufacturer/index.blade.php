@@ -26,9 +26,9 @@
     </div>
 
     {{-- Barra di ricerca --}}
-    <h1 class="big-title">Category</h1>
+    <h1 class="big-title">Supplier</h1>
     <div class="my-4 std-search-bar">
-        <form action="{{ route('admin.categories.index') }}" method="GET" class="d-flex">
+        <form action="{{ route('admin.manufacturers.index') }}" method="GET" class="d-flex">
             @csrf
             <div class="input-group">
                 <input type="text" name="search" class="form-control std-input" placeholder="Search..." value="{{ old('search', $search) }}">
@@ -46,30 +46,51 @@
     </div>
 
     {{-- Elenco parti --}}
-    @if (count($categories) > 0)
+    @if (count($manufacturers) > 0)
         <div class="view-table">
             <table class="table table-striped align-middle">
                     <tbody class="body">
-                        @foreach ($categories as $category)
+                        @foreach ($manufacturers as $manufacturer)
                         <tr>
                             <td>
                                 <div>
-                                    <p class="fw-bold ms-3 my-0">{{$category->name}}</p>
+                                    <p class="fw-bold ms-3 my-0">{{$manufacturer->name}}</p>
                                 </div>
                             </td>
 
                             <td>
                                 <div>
-                                    <p class="fw-bold my-0">{{$category->description}}</p>
+                                    <p class="fw-bold my-0">{{$manufacturer->country}}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <p class="fw-bold my-0">{{$manufacturer->contact_email}}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <p class="fw-bold my-0">{{$manufacturer->phone_number}}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <p class="fw-bold my-0">{{$manufacturer->address}}</p>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div>
+                                    <p class="fw-bold my-0">{{$manufacturer->website}}</p>
                                 </div>
                             </td>
 
                             <td >
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <a class="ms-3 me-2 button-action" href="{{route('admin.categories.edit', ['category' => $category])}}">
+                                    <a class="ms-3 me-2 button-action" href="{{route('admin.manufacturers.edit', ['manufacturer' => $manufacturer])}}">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <form class="button-none" action="{{route('admin.categories.destroy', ['category' => $category])}}" method="POST">
+                                    <form class="button-none" action="{{route('admin.manufacturers.destroy', ['manufacturer' => $manufacturer])}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="button-none">

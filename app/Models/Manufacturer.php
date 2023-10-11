@@ -11,4 +11,6 @@ class Manufacturer extends Model
     {
         return $this->hasMany(Part::class);
     }
+
+    protected $fillable = ['name', 'country', 'contact_email', 'phone_number', 'website', 'contact_person', 'address'];
 }

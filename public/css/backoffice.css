@@ -116,7 +116,6 @@
 .custom-search-bar {
   background-color: #f5f5f5;
   border-radius: 8px;
-  padding: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   width: 60%;
   margin: 0 auto;
@@ -134,6 +133,28 @@
   color: white;
   border-radius: 8px;
   padding: 6px 12px;
+  cursor: pointer;
+}
+
+.std-search-bar {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  width: 30%;
+  padding: 4px;
+}
+.std-search-bar .std-input {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font-size: 0.9rem;
+}
+.std-search-bar .std-button {
+  background-color: rgb(20, 81, 143);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  padding: 0.3rem 0.6rem;
   cursor: pointer;
 }
 
@@ -373,8 +394,10 @@
 
 .status {
   position: absolute;
-  right: 45%;
-  top: 3%;
+  margin-top: 1.5rem;
+  left: 50%;
+  top: 15%;
+  transform: translate(-50%, -50%);
   padding: 0.3rem 1rem;
   border-radius: 0.5rem;
   color: white;

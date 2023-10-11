@@ -46,9 +46,9 @@
 
             <div class="col-6">
                 <label for="category" class="form-label">Category</label>
-                <select class="form-select @error('category_id') is-invalid @enderror" aria-label="Default select example" name="category_id">
+                <select class="form-select @error('category_id') is-invalid @enderror" id="category_id" aria-label="Default select example" name="category_id" required>
                     @foreach($categories as $categoryId => $categoryName)
-                        <option {{(old('category_id') == $categoryId) ? 'selected' : ''}} value="{{ $categoryId }}">{{ $categoryName }}</option>
+                        <option {{old('category_id', $part->category_id) == $categoryId ? 'selected' : ''}} value="{{ $categoryId }}">{{ $categoryName }}</option>
                     @endforeach
                 </select>
                 @error('category_id')

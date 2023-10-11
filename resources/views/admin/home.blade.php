@@ -24,7 +24,7 @@
         </div>
 
         <div class="col-3">
-            <a class="square-button orange" href="{{route('admin.parts.index')}}">
+            <a class="square-button orange" href="{{route('admin.categories.index')}}">
                 <div class="row">
                     <div class="col-12 text-start">
                         <h2 class="mb-0 fw-bold">Category</h2>
@@ -44,7 +44,7 @@
         </div>
 
         <div class="col-3">
-            <a class="square-button azzurro" href="{{route('admin.parts.index')}}">
+            <a class="square-button azzurro" href="{{route('admin.manufacturers.index')}}">
                 <div class="row">
                     <div class="col-12 text-start">
                         <h2 class="mb-0 fw-bold">Suppliers</h2>

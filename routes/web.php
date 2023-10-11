@@ -30,7 +30,7 @@ Route::middleware(['auth'])
             Route::get('/', [HomeController::class, 'index'])->name('home');
             Route::resource('categories', CategoryController::class);
             Route::resource('parts', PartController::class);
-            Route::resource('suppliers', SupplierController::class);
+            //Route::resource('suppliers', SupplierController::class);
             Route::resource('orders', OrderController::class);
             Route::resource('orderitems', OrderItemController::class);
             Route::resource('manufacturers', ManufacturerController::class);
