@@ -3,7 +3,8 @@
 @section('content')
 <div class="container my-4">
     <div class="row justify-content-start gy-5">
-        <div class="col-3">
+        
+        <div class="col-lg-3 col-sm-6">
             <a class="square-button lime" href="{{route('admin.parts.index')}}">
                 <div class="row">
                     <div class="col-12 text-start">
@@ -23,7 +24,7 @@
             </a>
         </div>
 
-        <div class="col-3">
+        <div class="col-lg-3 col-sm-6">
             <a class="square-button orange" href="{{route('admin.categories.index')}}">
                 <div class="row">
                     <div class="col-12 text-start">
@@ -43,7 +44,7 @@
             </a>
         </div>
 
-        <div class="col-3">
+        <div class="col-lg-3 col-sm-6">
             <a class="square-button azzurro" href="{{route('admin.manufacturers.index')}}">
                 <div class="row">
                     <div class="col-12 text-start">
@@ -60,6 +61,26 @@
                     </div>
                 </div>
                 <div class="icon"><i class="bi bi-buildings-fill"></i></div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-sm-6">
+            <a class="square-button green-strong" href="{{route('admin.orders.index')}}">
+                <div class="row">
+                    <div class="col-12 text-start">
+                        <h2 class="mb-0 fw-bold">Orders</h2>
+                    </div>
+                    <div class="col-3 text-start">
+                        <div class="d-flex align-items-end">
+                            <h1 class="d-inline">{{ count($orders) }}</h1>
+                            <p class="ps-2">items</p>
+                        </div>
+                    </div>
+                    <div class="col-12 text-start">
+                        <p>Gestione dei tuoi ordini per la merce del tuo e-commerce, clicca per gestirli</p>
+                    </div>
+                </div>
+                <div class="icon"><i class="bi bi-cart-fill"></i></div>
             </a>
         </div>
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container my-4 pe-5">
+<div class="container my-4 pe-md-5 pe-sm-1">
 
     <div class="position-relative">
         {{-- Allert di avviso --}}
@@ -70,7 +70,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td class="mob-mood">
                                 <div class="d-flex my-1 align-items-center">
                                     <div class="w-75">
                                         <p class="fw-bold azzurro capsule mb-1">{{$part->manufacturer->name}}</p>
@@ -79,8 +79,8 @@
                                 </div>
                             </td>
             
-                            <td class="fs-5">{{$part->quantity}}</td>
-                            <td class="fs-5">{{$part->location}}</td>
+                            <td class="fs-5 mob-mood">{{$part->quantity}}</td>
+                            <td class="fs-5 mob-mood">{{$part->location}}</td>
                             
                             <td>
                                 <div class="d-flex justify-content-center align-items-center">
@@ -105,6 +105,7 @@
                                 </div>
                             </td>
                         </tr>
+                        
                         @endforeach 
                     </tbody>
                 </table>

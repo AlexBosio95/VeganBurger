@@ -9,7 +9,7 @@
         @method('PUT')
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6 col-sm-12">
                 <label class="opacity-50" for="name">Name</label>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="name" name="name" value="{{old('name', $manufacturer->name)}}">
@@ -18,7 +18,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-md-6 col-sm-12">
                 <label class="opacity-50" for="country">Country</label>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control @error('country') is-invalid @enderror" placeholder="country" name="country" value="{{old('country', $manufacturer->country)}}">
@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <div class="col-6">
+            <div class="col-md-6 col-sm-12">
                 <label class="opacity-50" for="contact_email">Email</label>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control @error('contact_email') is-invalid @enderror" placeholder="contact_email" name="contact_email" value="{{old('contact_email', $manufacturer->contact_email)}}">
@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="col-6">
+            <div class="col-md-6 col-sm-12">
                 <label class="opacity-50" for="phone_number">Phone</label>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control @error('phone_number') is-invalid @enderror" placeholder="phone_number" name="phone_number" value="{{old('phone_number', $manufacturer->phone_number)}}">
@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            <div class="col-6">
+            <div class="col-md-6 col-sm-12">
                 <label class="opacity-50" for="website">Website</label>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control @error('website') is-invalid @enderror" placeholder="website" name="website" value="{{old('website', $manufacturer->website)}}">
@@ -57,7 +57,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-md-6 col-sm-12">
                 <label class="opacity-50" for="contact_person">Contact</label>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control @error('contact_person') is-invalid @enderror" placeholder="contact_person" name="contact_person" value="{{old('contact_person', $manufacturer->contact_person)}}">

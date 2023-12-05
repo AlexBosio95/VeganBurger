@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container my-4 pe-5">
+<div class="container my-4 pe-md-5 pe-sm-1">
 
     <div class="position-relative">
         {{-- Allert di avviso --}}
@@ -59,7 +59,7 @@
                             </td>
 
                             <td>
-                                <div>
+                                <div class="mob-mood">
                                     <p class="fw-bold my-0">{{$category->description}}</p>
                                 </div>
                             </td>

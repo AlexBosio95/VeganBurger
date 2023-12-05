@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container my-4 pe-5">
+<div class="container my-4 pe-md-5 pe-sm-1">
 
     <div class="position-relative">
         {{-- Allert di avviso --}}
@@ -59,28 +59,28 @@
                             </td>
 
                             <td>
-                                <div>
+                                <div class="mob-mood">
                                     <p class="fw-bold my-0">{{$manufacturer->country}}</p>
                                 </div>
                             </td>
                             <td>
-                                <div>
+                                <div class="mob-mood">
                                     <p class="fw-bold my-0">{{$manufacturer->contact_email}}</p>
                                 </div>
                             </td>
                             <td>
-                                <div>
+                                <div class="mob-mood">
                                     <p class="fw-bold my-0">{{$manufacturer->phone_number}}</p>
                                 </div>
                             </td>
                             <td>
-                                <div>
+                                <div class="mob-mood">
                                     <p class="fw-bold my-0">{{$manufacturer->address}}</p>
                                 </div>
                             </td>
 
                             <td>
-                                <div>
+                                <div class="mob-mood">
                                     <p class="fw-bold my-0">{{$manufacturer->website}}</p>
                                 </div>
                             </td>

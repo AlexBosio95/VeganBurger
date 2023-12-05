@@ -119,8 +119,14 @@ class ManufacturerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Manufacturer $manufacturer)
     {
-        //
+        if($manufacturer->parts->count() > 0){
+            return redirect()->route('admin.manufacturers.index', ['manufacturer' => $manufacturer])->with('status', 'Impossibile eliminare l\'elemento poiché è utilizzato');
+        }
+
+        $manufacturer->delete();
+
+        return redirect()->route('admin.manufacturers.index', ['manufacturer' => $manufacturer])->with('status', 'Item deleted');
     }
 }

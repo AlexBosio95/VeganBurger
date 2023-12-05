@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Part;
 use App\Models\Category;
 use App\Models\Manufacturer;
+use App\Models\Order;
 
 class HomeController extends Controller
 {
@@ -15,6 +16,7 @@ class HomeController extends Controller
         $categories = Category::all();
         $manufacturers = Manufacturer::all();
         $parts = Part::all();
-        return view(('admin.home'), compact('parts', 'categories', 'manufacturers'));
+        $orders = Order::all();
+        return view(('admin.home'), compact('parts', 'categories', 'manufacturers', 'orders'));
     }
 }

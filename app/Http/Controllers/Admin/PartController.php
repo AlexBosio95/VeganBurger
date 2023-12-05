@@ -173,10 +173,15 @@ class PartController extends Controller
             Storage::delete($part->image);
         }
 
-        $part->delete();
+        try {
+            $part->delete();
 
-        return redirect()->route('admin.parts.index', ['part' => $part])->with('status', 'Item deleted');
-    
+            return redirect()->route('admin.parts.index', ['part' => $part])->with('status', 'Item deleted');
+
+        } catch (\Throwable $th) {
+
+            return redirect()->route('admin.parts.index', ['part' => $part])->with('status', 'Impossibile eliminare l\'elemento poiché è utilizzato');
+        }    
     }
 
     public function search(Request $request)
@@ -188,8 +193,6 @@ class PartController extends Controller
         } else {
             $results = []; // Nessun risultato se non è stato fornito un termine di ricerca
         }
-
-        dd($searchTerm);
         
         return view('admin.part.index', compact('searchTerm', 'results'));
     }

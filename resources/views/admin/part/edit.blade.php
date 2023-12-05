@@ -34,7 +34,7 @@
         </div>
 
         <div class="row align-items-start">
-            <div class="col-6">
+            <div class="col-4">
                 <label for="quantity" class="form-label">Quantity</label>
                 <div class="input-group mb-3">
                     <input type="number" class="form-control @error('quantity') is-invalid @enderror" placeholder="0-9999" name="quantity" value="{{old('quantity', $part->quantity)}}">
@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <div class="col-6">
+            <div class="col-4">
                 <label for="category" class="form-label">Category</label>
                 <select class="form-select @error('category_id') is-invalid @enderror" id="category_id" aria-label="Default select example" name="category_id" required>
                     @foreach($categories as $categoryId => $categoryName)
@@ -55,14 +55,31 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+
+            <div class="col-4">
+                <label for="category" class="form-label">Visible</label>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" @if($part->visible) checked @endif value="1" name="visible">
+                    <input type="hidden" name="visible" value="0">
+                </div>
+
+                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        $('#flexSwitchCheckDefault').change(function () {
+                            $('input[name="visible"]').val($(this).prop('checked') ? '1' : '0');
+                        });
+                    });
+                </script>
+            </div>
         </div>
 
         <div class="row align-items-start">
             <div class="col-4">
                 <label for="manufacturer" class="form-label">Manufacturer</label>
-                <select class="form-select @error('manufacturer_id') is-invalid @enderror" aria-label="Default select example" name="manufacturer_id">
+                <select class="form-select @error('manufacturer_id') is-invalid @enderror" id="manufacturer_id" aria-label="Default select example" name="manufacturer_id">
                     @foreach($manufacturers as $manufacturerId => $manufacturerName)
-                        <option {{(old('manufacturer_id') == $manufacturerId) ? 'selected' : ''}} value="{{ $manufacturerId }}">{{ $manufacturerName }}</option>
+                        <option {{old('manufacturer_id', $part->manufacturer_id) == $manufacturerId ? 'selected' : ''}} value="{{ $manufacturerId }}">{{ $manufacturerName }}</option>
                     @endforeach
                 </select>
                 @error('manufacturer_id')

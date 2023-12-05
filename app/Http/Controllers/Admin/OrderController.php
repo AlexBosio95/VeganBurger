@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Order;
 
 class OrderController extends Controller
 {
@@ -12,9 +13,16 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $search = $request->query('search');
+        if ($search) {
+            $orders = Order::where('order_number', 'like', "%$search%")->get();
+        } else {
+            $orders = Order::all();
+        }
+
+        return view(('admin.order.index'), compact('orders', 'search'));
     }
 
     /**

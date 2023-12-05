@@ -49,6 +49,10 @@
     background-color: rgba(125, 125, 125, 0.517);
 }
 
+.gray-strong{
+    background-color: rgba(73, 73, 73, 0.518);
+}
+
 .azzurro{
     background-color: rgba(80, 162, 255, 0.562);
 }
@@ -59,6 +63,14 @@
 
 .green{
     background-color: rgba(106, 255, 80, 0.603);
+}
+
+.green-strong{
+    background-color: rgba(43, 185, 85, 0.879);
+}
+
+.red{
+    background-color: rgba(216, 26, 26, 0.833);
 }
 
 .blue{
@@ -235,6 +247,24 @@
     }
 }
 
+.button-order{
+    border-radius: 20%;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    border: none;
+
+    &:hover{
+        transform: scale(1.05);
+    }
+}
+
 .button-back{
     background-color: rgba(239, 239, 239, 0.691);
     border-radius: 25%;
@@ -330,9 +360,11 @@
     justify-content: start;
     align-items: flex-start;
     flex-direction: column;
+    position: relative;
 
+    
     .menu-button{
-        width: 100%;
+        width: 50%;
         border-radius: .5rem;
         background-color: rgba(239, 239, 239, 0.691);
         color: rgb(66, 66, 66);
@@ -343,6 +375,9 @@
         transition: all .2s ease-in-out;
         padding-left: 1rem;
         font-weight: bold;
+        cursor: pointer;
+        display: inline-block;
+        margin: .2rem;
 
         &:hover{
             transform: scale(1.03);
@@ -352,6 +387,25 @@
     }
 
     .menu-button-dashboard{
+        width: 40px;
+        border-radius: .5rem;
+        text-decoration: none;
+        text-align: center;
+        color: white;
+        height: 40px;
+        line-height: 40px;
+        font-weight: bold;
+        transition: all .2s ease-in-out;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+
+        &:hover{
+            transform: scale(1.05);
+        }
+    }
+
+    .menu-button-big{
         width: 100%;
         border-radius: .5rem;
         text-decoration: none;
@@ -380,7 +434,6 @@
         color: black;
         font-weight: bold;
     }
-
 }
 
 .main{
@@ -483,6 +536,10 @@
 
 }
 
+.menu-small{
+    display: none;
+}
+
 
 @keyframes bounce {
     0% {
@@ -499,5 +556,76 @@
     }
     100% {
         opacity: 1;
+    }
+}
+
+@media screen and (max-width: 992px) {
+
+    .menu-small{
+        display: block;
+    }
+
+    .menu{
+        display: none;
+    }
+
+    .custom-search-bar {
+        width: 90%;
+    }
+
+    .mob-mood{
+        display: none;
+    }
+
+    .box-card{
+        width: 90%;
+        position: relative;
+    
+        .desc-box{
+            font-size: 1rem;
+        }
+    
+        .preview-image-view{
+            width: 100%;
+            height: 230px;
+            margin: 0;
+        }
+    
+        .box-code{
+            position: relative;
+            display: block;
+            top: 10px;
+            left: 0;
+            width: 90%;
+            margin: 0 auto;
+        }
+    
+    }
+
+    .button-back{
+        top: 10px;
+        left: 300px;
+    }
+
+    .capsule-box{
+        width: 90%;
+    }
+
+    .std-search-bar {
+        width: 100%;
+    }
+
+    .circle-status{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
+
+}
+
+
+@media screen and (min-width: 992px) {
+    .only-mobile{
+        display: none;
     }
 }

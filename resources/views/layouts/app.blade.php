@@ -54,52 +54,89 @@
                 </nav>
             </div>
         @else
-            <div class="col-3">
+            <div class="container menu-small">
+                <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="light">
+                    <div class="bg-light p-4">
+                        <ol class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <a class="fw-bold text-decoration-none" href="{{route('admin.home')}}">Home</a>
+                            </li> 
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <a class="fw-bold text-decoration-none" href="{{route('admin.orderitems.index')}}">Checkout</a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <a class="fw-bold text-decoration-none" href="{{route('admin.orders.index')}}">Orders</a>
+                            </li>                          
+                        </ol>
+                    </div>
+                </div>
+                <nav class="navbar navbar-light bg-light">
+                    <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="col-3 d-sm-none d-md-block">
                 <div class="menu">
                     <h4 class="title-small">Menu</h4>
 
-                    <a class="menu-button-dashboard mt-1" href="{{route('admin.home')}}">DASHBOARD</a>
+                    <a class="menu-button-dashboard gray-strong" href="{{route('admin.home')}}"><i class="bi bi-grid-fill fs-4"></i></a>
+                    <a class="menu-button-big mt-3" href="{{route('admin.orderitems.index')}}"><i class="bi bi-box-seam-fill"></i> CHECKOUT</a>
+                    <a class="menu-button-big mt-1" href="{{route('admin.orders.index')}}"><i class="bi bi-cart-check-fill"></i> ORDERS</a>
 
-                    <div class="d-flex align-items-center mt-3">
+                    {{-- PART --}}
+                    <div class="d-flex align-items-center mt-4">
                         <div class="circle lime me-2"></div>
                         <p class="mb-0 fw-bold">PART</p>
                     </div>
-                    <a class="menu-button mt-1" href="{{route('admin.parts.index')}}"><i class="bi bi-list"></i> View</a>
-                    <a class="menu-button" href="{{route('admin.parts.create')}}"><i class="bi bi-plus-circle-fill"></i> Add New</a>
+                    <div class="d-flex align-items-center w-100 mt-1">
+                        <a class="menu-button" href="{{route('admin.parts.index')}}"><i class="bi bi-list"></i> View</a>
+                        <a class="menu-button" href="{{route('admin.parts.create')}}"><i class="bi bi-plus-circle-fill"></i> Add New</a>
+                    </div>
 
+                    {{-- CATEGORY --}}
                     <div class="d-flex align-items-center mt-4">
                         <div class="circle orange me-2"></div>
                         <p class="mb-0 fw-bold">CATEGORY</p>
                     </div>
-                    <a class="menu-button mt-1" href="{{route('admin.categories.index')}}"><i class="bi bi-list"></i> View</a>
-                    <a class="menu-button" href="{{route('admin.categories.create')}}"><i class="bi bi-plus-circle-fill"></i> Add New</a>
+                    <div class="d-flex align-items-center w-100 mt-1">
+                        <a class="menu-button" href="{{route('admin.categories.index')}}"><i class="bi bi-list"></i> View</a>
+                        <a class="menu-button" href="{{route('admin.categories.create')}}"><i class="bi bi-plus-circle-fill"></i> Add New</a>
+                    </div>
 
+                    {{-- SUPPLIERS --}}
                     <div class="d-flex align-items-center mt-4">
                         <div class="circle azzurro me-2"></div>
                         <p class="mb-0 fw-bold">SUPPLIERS</p>
                     </div>
-                    <a class="menu-button mt-1" href="{{route('admin.manufacturers.index')}}"><i class="bi bi-list"></i> View</a>
-                    <a class="menu-button" href="{{route('admin.manufacturers.create')}}"><i class="bi bi-plus-circle-fill"></i> Add New</a>
+                    <div class="d-flex align-items-center w-100 mt-1">
+                        <a class="menu-button" href="{{route('admin.manufacturers.index')}}"><i class="bi bi-list"></i> View</a>
+                        <a class="menu-button" href="{{route('admin.manufacturers.create')}}"><i class="bi bi-plus-circle-fill"></i> Add New</a>
+                    </div>
 
                     {{-- Logout --}}
-                    <div class="d-flex align-items-center mt-5">
+                    <div class="d-flex align-items-center mt-4">
                         <div class="circle gray me-2"></div>
                         <p class="mb-0 fw-bold">SETTING</p>
                     </div>
-                    <a class="menu-button mt-1" href=""><i class="bi bi-person-circle"></i> {{ Auth::user()->name }}</a>
-                    <a class="menu-button" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="bi bi-box-arrow-left"></i> Logout</a>
+                    <div class="d-flex align-items-center w-100 mt-1">
+                        <a class="menu-button mt-1" href=""><i class="bi bi-person-circle"></i> {{ Auth::user()->name }}</a>
+                        <a class="menu-button" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="bi bi-box-arrow-left"></i> Logout</a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-
+                    </div>
                 </div>
             </div>
         @endguest
         @guest
             <div class="col-12 mt-4">
         @else
-            <div class="col-9 pe-3">
+            <div class="col-lg-9 pe-3 col-sm-12">
         @endguest
                     @yield('content')
                 </div>

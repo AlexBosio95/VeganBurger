@@ -30,5 +30,5 @@ class Part extends Model
         return $this->belongsTo(Manufacturer::class);
     }
 
-    protected $fillable = ['category_id', 'part_number', 'name', 'description', 'quantity', 'price', 'manufacturer_id', 'location', 'image'];
+    protected $fillable = ['category_id', 'part_number', 'name', 'description', 'quantity', 'price', 'manufacturer_id', 'location', 'image', 'visible'];
 }

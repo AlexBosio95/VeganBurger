@@ -16,13 +16,13 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('order_number');
-            $table->unsignedBigInteger('supplier_id');
-            $table->date('order_date');
+            $table->unsignedBigInteger('manufacturer_id');
+            $table->date('order_date')->default(now());;
             $table->date('arrival_date')->nullable();
             $table->string('status');
             $table->timestamps();
             
-            $table->foreign('supplier_id')->references('id')->on('suppliers');
+            $table->foreign('manufacturer_id')->references('id')->on('manufacturers');
         });
     }
 

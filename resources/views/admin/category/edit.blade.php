@@ -9,7 +9,7 @@
         @method('PUT')
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6 col-sm-12">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="name" name="name" value="{{old('name', $category->name)}}">
                     @error('name')

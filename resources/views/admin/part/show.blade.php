@@ -5,15 +5,15 @@
         <h1 class="big-title">Part View</h1>
         <div class="box-card mt-4">
             
-            <div class="d-flex justify-content-end">
-
-                <div class="d-flex justify-content-start w-100">
+            <div class="row">
+                
+                <div class="col-md-6 mob-mood">
                     <div class="visible-print m-4">
                         {!! QrCode::size(150)->generate(route('admin.parts.show', ['part' => $part->part_number])); !!}
                     </div>
                 </div>
                 
-                <div>
+                <div class="col-md-6 col-sm-12">
                     @if ($part->image)
                         <img
                             src="{{asset('storage/' . $part->image)}}"

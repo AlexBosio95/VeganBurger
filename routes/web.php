@@ -34,10 +34,15 @@ Route::middleware(['auth'])
             Route::resource('orders', OrderController::class);
             Route::resource('orderitems', OrderItemController::class);
             Route::resource('manufacturers', ManufacturerController::class);
+            Route::post('orderitems/changeStatus/{id}', [OrderItemController::class, 'changeStatus'])->name('orderitems.changeStatus');
             Route::delete('parts/deleteImage/{part}', [PartController::class, 'deleteImage'])->name('parts.deleteImage');
 });
         
 Route::get('{any?}', function() {
-    return view('welcome');
+    return view('guest.home');
 })->where('any', '.*');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
