@@ -32,10 +32,35 @@ export default {
             };
         },
         addToCartHandler(partToAdd) {
-            this.orderBurger.push(partToAdd);
+            const existingPartIndex = this.orderBurger.findIndex((item) => item.id === partToAdd.id);
+
+            if (existingPartIndex !== -1) {
+                // Se l'oggetto esiste già, aggiungi la quantità
+                this.orderBurger[existingPartIndex].quantity_to_order += partToAdd.quantity_to_order;
+            } else {
+                // Se l'oggetto non esiste, aggiungi l'intero oggetto
+                this.orderBurger.push(partToAdd);
+            }
+
+            // Aggiorna i dati in localStorage
+            localStorage.setItem('orderBurger', JSON.stringify(this.orderBurger));
+        },
+        loadOrderBurgerFromLocalStorage() {
+            const savedOrderBurger = localStorage.getItem('orderBurger');
+
+            if (savedOrderBurger) {
+                try {
+                    this.orderBurger = JSON.parse(savedOrderBurger);
+                } catch (error) {
+                    console.error('Errore nel parsing di orderBurger da localStorage', error);
+                }
+            }
         },
     },
     created() {
+        // Carica i dati del carrello da localStorage durante la creazione del componente
+        this.loadOrderBurgerFromLocalStorage();
+
         this.$root.$on("add-to-cart-event", this.addToCartHandler);
     },
     mounted(){
