@@ -16,7 +16,6 @@ class CreateRemindersTable extends Migration
         Schema::create('reminders', function (Blueprint $table) {
             $table->id();
             $table->string('title', 255);
-            $table->string('title', 255);
             $table->string('description');
             $table->string('slug')->unique();
             $table->string('status');

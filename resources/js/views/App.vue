@@ -45,6 +45,25 @@ export default {
             // Aggiorna i dati in localStorage
             localStorage.setItem('orderBurger', JSON.stringify(this.orderBurger));
         },
+        deleteToCartHandler(partToDel) {
+            const existingPartIndex = this.orderBurger.findIndex((item) => item.id === partToDel);
+
+            if (existingPartIndex !== -1) {
+
+                console.log(existingPartIndex)
+                this.orderBurger.splice(existingPartIndex, 1);
+            }
+
+            // Aggiorna i dati in localStorage
+            localStorage.setItem('orderBurger', JSON.stringify(this.orderBurger));
+        },
+        deleteAllToCartHandler() {
+
+            this.orderBurger = [];
+
+            // Aggiorna i dati in localStorage
+            localStorage.setItem('orderBurger', JSON.stringify(this.orderBurger));
+        },
         loadOrderBurgerFromLocalStorage() {
             const savedOrderBurger = localStorage.getItem('orderBurger');
 
@@ -62,6 +81,8 @@ export default {
         this.loadOrderBurgerFromLocalStorage();
 
         this.$root.$on("add-to-cart-event", this.addToCartHandler);
+        this.$root.$on("delete-to-cart-event", this.deleteToCartHandler);
+        this.$root.$on("remove-all-to-cart-event", this.deleteAllToCartHandler);
     },
     mounted(){
         this.fetchParts();

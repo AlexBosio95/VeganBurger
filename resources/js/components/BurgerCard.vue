@@ -42,6 +42,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../sass/variables.scss';
 .burger-card{
     min-height: 250px;
     border: none;
@@ -108,6 +109,23 @@ export default {
         font-size: .9rem;
         text-decoration: none;
         padding-bottom: 1rem;
+        border: none;
+        background-color: $gray-border;
+        border-radius: .4rem;
+        height: 3rem;
+        text-align: center;
+        padding: .8rem;
+        animation: ease-in-out;
+
+        &:hover{
+            transform: scale(1.05);
+            transition: .3s;
+        }
+
+        &:active{
+            transform: scale(1);
+            transition: .2s;
+        }
     }
 }
 
