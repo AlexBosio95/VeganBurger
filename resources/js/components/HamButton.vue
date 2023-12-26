@@ -1,7 +1,8 @@
 <template>
-    <a :href="'#' + dataButton.url" class="sw-button">
+    <router-link to="allburger" class="sw-button">
         {{dataButton.title}}
-    </a>
+    </router-link>
+    
 </template>
 
 <script>

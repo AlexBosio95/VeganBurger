@@ -5,30 +5,7 @@
         <h1 class="title mb-5">Cart</h1>
             <div class="row" v-if="!isPayment">
                 <div class="col-8">
-                    <div class="order-list" v-if="orderBurger.length > 0">
-                        <div class="card-order" v-for="order in orderBurger" :key="order.id">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img class="image" :src="'storage/parts_img/' + order.image" :alt="order.name">
-                                </div>
-                                <div class="col-6 d-flex align-items-center justify-content-center">
-                                    <div>
-                                        <h3 class="name">{{order.name}}</h3>
-                                        <p>{{order.description}}</p>
-                                    </div>
-                                </div>
-                                <div class="col-2 d-flex align-items-center justify-content-center">
-                                    <div>
-                                        <p class="price">$ {{order.price}}</p>
-                                        <p class="qta">{{order.quantity_to_order}}</p>
-                                    </div>
-                                </div>
-                                <div class="col-1">
-                                    <button @click="removeToCart(order)" class="canc-btn"><i class="bi bi-x-square-fill"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <CardOrderItems v-if="orderBurger.length > 0" :orderBurger = "orderBurger" />
                     <div class="w-100 pt-5" v-else>
                         <h2 class="text-center">No Item</h2>
                         <p class="text-center fs-4">Your cart is as light as air, but we know how to fill it with delicious vegan sandwiches. Start your flavor journey now!</p>
@@ -60,9 +37,16 @@
                 <div v-if="paySucess" class="success-pay">
                     <i class="fs-3 bi bi-check-circle-fill"></i>
                     <h4 class="my-3">Payment completed successfully</h4>
+                    <h5>Order ID: {{orderNumber}}</h5>
                     <p class="fs-5 w-75 m-auto">Thank you for your order! We appreciate your support for our passion for vegan sandwiches. Enjoy your meal!</p>
                     <button class="submit mt-3"><router-link to="/">Close</router-link></button>
-                    
+                </div>
+
+                <div v-if="payError" class="success-pay mt-5">
+                    <i class="fs-2 bi bi-x-circle-fill"></i>
+                    <h4 class="my-3">{{ErrorTitle}}</h4>
+                    <p class="fs-5 w-75 m-auto">{{Errormessage}}</p>
+                    <button class="submit mt-3"><router-link to="/">Close</router-link></button>
                 </div>
 
                 <button v-show="showDropInContainer" class="submit" id="submit-button">Pay</button>
@@ -74,12 +58,18 @@
 </template>
 
 <script>
+import CardOrderItems from '../components/CardOrderItems.vue';
 export default {
+    components: {CardOrderItems},
     data(){
         return{
             isPayment: false,
             showDropInContainer: false,
-            paySucess: false
+            paySucess: false,
+            orderNumber: "",
+            payError: false,
+            Errormessage: "",
+            ErrorTitle: ""
         }
     },
     props: {
@@ -94,11 +84,6 @@ export default {
             return this.orderBurger.reduce((total, order) => {
                 return total + order.price * order.quantity_to_order;
             }, 0).toFixed(2);
-        },
-        removeToCart(order){
-            const partToRemove = order.id;
-
-            this.$root.$emit("delete-to-cart-event", partToRemove);
         },
         async initializeBraintreeDropIn() {
             
@@ -126,27 +111,36 @@ export default {
                         console.error(err);
                     } else {
                     // Invia il payload al tuo server Laravel per elaborare il pagamento
-                    axios.post('/api/braintree/checkout', { paymentMethodNonce: payload.nonce })
+                    axios.post('/api/braintree/checkout', {
+                            paymentMethodNonce: payload.nonce,
+                            orderItems: vm.orderBurger 
+                        })
                         .then(response => {
-                        // Gestisci la risposta dal tuo server (ad esempio, mostra un messaggio di successo)
 
                             if (response.data.success) {
                                 vm.$root.$emit("remove-all-to-cart-event");
                                 vm.showDropInContainer = false;
                                 vm.paySucess = true;
+                                vm.orderNumber = response.data.order_number;
                             }
 
                         })
                         .catch(error => {
-                        // Gestisci gli errori
-                            console.error('Errore durante la richiesta di pagamento:', error);
+                            vm.payError = true;
+                            vm.paySucess = false;
+                            vm.showDropInContainer = false;
+                            vm.Errormessage = "Error requesting payment, we ask you to try again",
+                            vm.ErrorTitle = "Payment error"
                         });
                     }
                 });
             });
 
             } catch (error) {
-                console.error('Errore durante l\'inizializzazione di Braintree Drop-in:', error);
+                this.showDropInContainer = false;
+                this.Errormessage = "Error token missmatch, we ask you to try again";
+                this.payError = true;
+                this.ErrorTitle = "Token error"
             }
         }
     }
@@ -162,7 +156,7 @@ export default {
     width: 100%;
     padding-top: 110px;
     padding-bottom: 20px;
-    height: 100vh;
+    min-height: 100vh;
 
     .box{
         background-color: white;
@@ -202,7 +196,7 @@ export default {
             }
 
             .success-pay{
-                margin-top: 3rem;
+                margin-top: 1rem;
 
                 a{
                     color: white;
@@ -215,53 +209,6 @@ export default {
             font-size: 3rem;
             font-weight: 500;
             text-align: center;
-        }
-
-        .order-list{
-            .card-order{
-                background-color: $gray-bg;
-                padding: 1rem;
-                border-radius: .5rem;
-                margin-bottom: 1rem;
-            }
-
-            .image{
-                width: 110px;
-                height: 110px;
-                object-fit: cover;
-                object-position: center;
-                border-radius: .3rem;
-                margin: 1rem;
-            }
-
-            .name{
-                font-size: 2rem;
-            }
-            
-            .price{
-                font-size: 1.2rem;
-            }
-
-            .qta{
-                font-size: 1.2rem;
-                background-color: $gray-border;
-                border-radius: 2rem;
-                text-align: center;
-                margin: 0 .7rem;
-                font-weight: 450;
-            }
-
-            .canc-btn{
-                border: none;
-                background-color: transparent;
-                color: red;
-                font-size: 1.4rem;
-                transition: .3s ease-in-out;
-
-                &:hover{
-                    transform: scale(1.25);
-                }
-            }
         }
 
     }
